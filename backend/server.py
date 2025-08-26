@@ -8,7 +8,7 @@ app = Flask(__name__)
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
 # Load reference image of authorized person
-ref_img = cv2.imread("authorized.jpg", cv2.IMREAD_GRAYSCALE)
+ref_img = cv2.imread("../known_faces/authorized.jpg", cv2.IMREAD_GRAYSCALE)
 ref_img = cv2.resize(ref_img, (100, 100))  # Normalize size
 
 def is_authorized_face(frame):

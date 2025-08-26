@@ -1,10 +1,7 @@
 #include "WiFi.h"
 #include "esp_camera.h"
 #include "HTTPClient.h"
-
-const char* ssid = "YOUR_WIFI_SSID";
-const char* password = "YOUR_WIFI_PASS";
-String serverName = "http://YOUR_PC_IP:5000/upload";
+#include "secrets.h"
 
 // Select camera model
 #define CAMERA_MODEL_AI_THINKER
@@ -16,7 +13,7 @@ void setup() {
   Serial.begin(115200);
   
   // Connect WiFi
-  WiFi.begin(ssid, password);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -75,7 +72,7 @@ void loop() {
       return;
     }
     
-    http.begin(client, serverName);
+    http.begin(client, SERVER_URL);
     http.addHeader("Content-Type", "image/jpeg");
     int httpResponseCode = http.POST(fb->buf, fb->len);
     
