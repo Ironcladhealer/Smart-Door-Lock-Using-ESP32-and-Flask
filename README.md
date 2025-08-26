@@ -128,8 +128,3 @@ You should see:
 
 Pull requests are welcome! If you find bugs, feel free to open an issue.
 
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
